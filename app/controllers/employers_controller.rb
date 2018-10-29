@@ -1,5 +1,6 @@
 class EmployersController < ApplicationController
   before_action :set_employer, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_student!
 
   # GET /employers
   # GET /employers.json
