@@ -8,7 +8,6 @@ Rails.application.routes.draw do
   resources :companies
   resources :projects
   resources :subjects
-  resources :admins
   resources :universities
   resources :cities
   devise_for :students
