@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>First name:</strong>
+  <%= @employer.first_name %>
+</p>
+
+<p>
+  <strong>Last name:</strong>
+  <%= @employer.last_name %>
+</p>
+
+<p>
+  <strong>Surname:</strong>
+  <%= @employer.surname %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @employer.email %>
+</p>
+
+<%= link_to 'Edit', edit_employer_path(@employer) %> |
+<%= link_to 'Back', employers_path %>
