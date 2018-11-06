@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root 'home#index' 
   resources :faculties
   resources :teachers
   resources :groups
