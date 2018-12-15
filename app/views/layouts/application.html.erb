@@ -12,6 +12,7 @@
      <%if student_signed_in? %>
         <li><%=link_to ' My network ', students_path %></li>
         <li><%=link_to ' My profile ', student_path(id: current_student.id) %></li>
+        <li><%=link_to ' My projects ', projects_path(student_id: current_student.id) %></li>
         <li><%=link_to ' Sign out ', destroy_student_session_path, method: :delete, class: 'glyphicon glyphicon-log-out ' %></li>
      <%end %>
      <%if employer_signed_in? %>
