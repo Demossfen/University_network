@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181029103516) do
+ActiveRecord::Schema.define(version: 20181215090354) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20181029103516) do
     t.bigint "city_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "description"
     t.index ["city_id"], name: "index_companies_on_city_id"
   end
 
@@ -96,7 +97,6 @@ ActiveRecord::Schema.define(version: 20181029103516) do
     t.string "surname"
     t.date "birth_date"
     t.integer "year_of_study"
-    t.string "role"
     t.bigint "group_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -105,6 +105,7 @@ ActiveRecord::Schema.define(version: 20181029103516) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.string "roles"
     t.index ["email"], name: "index_students_on_email", unique: true
     t.index ["group_id"], name: "index_students_on_group_id"
     t.index ["reset_password_token"], name: "index_students_on_reset_password_token", unique: true
