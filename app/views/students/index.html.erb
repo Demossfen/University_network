@@ -13,6 +13,7 @@
     <% @students.each do |student| %>
       <tr>
         <td><%= link_to 'Show', student %></td>
+        <td><%= student.full_name %></td>
       </tr>
     <% end %>
   </tbody>
