@@ -1,16 +1,17 @@
 class StudentsController < ApplicationController
+  include Filterable
   before_action :set_student, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_student!
 
   # GET /students
   # GET /students.json
   def index
-    @students = Student.all
+    @students = filtered(Student.all)
   end
 
   # GET /students/1
   # GET /students/1.json
   def show
+    @email = @student.email
   end
 
   # GET /students/new
@@ -63,13 +64,18 @@ class StudentsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_student
-      @student = Student.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_student
+    @student = Student.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def student_params
-      params.fetch(:student, {})
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def student_params
+    params.fetch(:student, {})
+  end
+
+  def filtering_params
+    params.slice(:by_group, :by_year_of_study, :by_last_name)
+  end
+
 end
