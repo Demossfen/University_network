@@ -1,6 +1,5 @@
 class FacultiesController < ApplicationController
   before_action :set_faculty, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_student!
 
   # GET /faculties
   # GET /faculties.json

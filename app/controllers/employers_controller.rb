@@ -1,6 +1,5 @@
 class EmployersController < ApplicationController
   before_action :set_employer, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_student!
 
   # GET /employers
   # GET /employers.json
@@ -70,6 +69,6 @@ class EmployersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def employer_params
-      params.require(:employer).permit(:first_name, :last_name, :surname, :email)
+      params.require(:employer).permit(:first_name, :last_name, :surname, :email, :company_id)
     end
 end

@@ -1,6 +1,5 @@
 class SpecialtiesController < ApplicationController
   before_action :set_specialty, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_student!
 
   # GET /specialties
   # GET /specialties.json

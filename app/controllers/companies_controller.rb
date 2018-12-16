@@ -1,6 +1,6 @@
 class CompaniesController < ApplicationController
   before_action :set_company, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_student!
+  before_action :authenticate_employer!, except: %i[new create], if: :current_employer
 
   # GET /companies
   # GET /companies.json
@@ -29,8 +29,8 @@ class CompaniesController < ApplicationController
 
     respond_to do |format|
       if @company.save
-        format.html { redirect_to @company, notice: 'Company was successfully created.' }
-        format.json { render :show, status: :created, location: @company }
+        format.html { redirect_to new_employer_registration_path, notice: 'Company was successfully created.' }
+        format.json { render :show, status: :created, location: new_employer_registration_path }
       else
         format.html { render :new }
         format.json { render json: @company.errors, status: :unprocessable_entity }
@@ -70,6 +70,6 @@ class CompaniesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def company_params
-      params.require(:company).permit(:name, :site_link)
+      params.require(:company).permit(:name, :site_link, :description, :city_id)
     end
 end
