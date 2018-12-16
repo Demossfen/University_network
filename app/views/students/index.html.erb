@@ -1,6 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Students</h1>
+<%= form_tag('/students', method: :get)%>
+  <%= select_tag :by_group, options_for_select(Group.all.collect{ |g| [g.title, g.id] }, params[:by_group]) %>
+  <%= select_tag :by_year_of_study, options_for_select(1..6, params[:by_year_of_study]) %>
+  <%= text_field_tag :by_last_name, params[:by_last_name] %>
+  <%= submit_tag 'Фільтрувати'%><br>
 
 <table>
   <thead>
@@ -19,4 +24,3 @@
   </tbody>
 </table>
 
-<br>
