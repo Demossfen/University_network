@@ -21,6 +21,16 @@
     <%= form.text_field :site_link, id: :company_site_link %>
   </div>
 
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description, id: :description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :city %>
+    <%= form.collection_select :city_id,  City.order(:name), :id, :name, { include_blank: false }, { class: 'form-control' }%>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>
