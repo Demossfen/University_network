@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'mails/new'
+
+  post 'mails/create'
+
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   root 'home#index' 
   resources :faculties
