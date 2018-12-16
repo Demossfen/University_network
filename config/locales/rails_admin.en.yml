@@ -1,0 +1,8 @@
+en:
+  admin:
+    actions:
+      approve_employer:
+        title: "Approve"
+        menu: "Approve"
+        breadcrumb: "Approve"
+        link: "Approve"

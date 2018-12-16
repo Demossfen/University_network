@@ -1,28 +1,16 @@
+# frozen_string_literal: true
+
+require Rails.root.join(
+    'lib', 'rails_admin', 'config', 'actions', 'approve_employer.rb'
+)
+require Rails.root.join(
+    'lib', 'rails_admin', 'config', 'actions', 'ban_employer.rb'
+)
+
 RailsAdmin.config do |config|
-
-  ### Popular gems integration
-
-  ## == Devise ==
-  # config.authenticate_with do
-  #   warden.authenticate! scope: :user
-  # end
-  # config.current_user_method(&:current_user)
-
-  ## == Cancan ==
-  # config.authorize_with :cancan
-
-  ## == Pundit ==
-  # config.authorize_with :pundit
-
-  ## == PaperTrail ==
-  # config.audit_with :paper_trail, 'User', 'PaperTrail::Version' # PaperTrail >= 3.0.0
-
-  ### More at https://github.com/sferik/rails_admin/wiki/Base-configuration
-
-  ## == Gravatar integration ==
-  ## To disable Gravatar integration in Navigation Bar set to false
-  # config.show_gravatar = true
-
+  config.current_user_method(&:current_student)
+  config.parent_controller = 'ApplicationController'
+  config.authorize_with :cancan, Ability
   config.actions do
     dashboard                     # mandatory
     index                         # mandatory
@@ -33,9 +21,19 @@ RailsAdmin.config do |config|
     edit
     delete
     show_in_app
+    approve_employer
+    ban_employer
+  end
 
-    ## With an audit adapter, you can add:
-    # history_index
-    # history_show
+  config.model 'Employer' do
+    list do
+      field :last_name
+      field :first_name
+      field :surname
+      field :company
+      field :status
+      field :email
+      include_all_fields
+    end
   end
 end
