@@ -1,0 +1,30 @@
+<%= form_tag({controller: "mails", action: "create"}, method: "post") %>
+  <%# if project.errors.any? %>
+<!--    <div id="error_explanation">-->
+<!--      <h2><%#= pluralize(project.errors.count, "error") %> prohibited this project from being saved:</h2>-->
+
+<!--      <ul>-->
+        <%# project.errors.full_messages.each do |message| %>
+<!--          <li><%#= message %></li>-->
+        <%# end %>
+<!--      </ul>-->
+<!--    </div>-->
+    <div class="field">
+      To <%=params[:to]%>
+      <%= hidden_field_tag :to, params[:to] %>
+    </div>
+    <div class="field">
+      From <%=@from %>
+      <%= hidden_field_tag :from, @from %>
+    </div>
+
+    <div class="field">
+      <%= label_tag :message %>
+      <%= text_area_tag :body %>
+    </div>
+
+    <div class="actions">
+      <%= submit_tag 'Send' %>
+    </div>
+
+<%# end %>
